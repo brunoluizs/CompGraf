@@ -116,7 +116,7 @@ class CvCubePers extends Canvas implements Runnable {
 	Thread thr = new Thread(this);
 	
 	public void run() {
-		
+		/*
 		Point3D a = new Point3D(10,10,0);
 		Point3D b = new Point3D(100,-100,10);
 		Point3D f = new Point3D(190,10,0);
@@ -126,7 +126,7 @@ class CvCubePers extends Canvas implements Runnable {
 		herm.setPoint(b, 1);
 		herm.setPoint(f, 2);
 		herm.setPoint(d, 3);
-		
+		*/
 		
 		Point3D orig = new Point3D(0,0,0);
 		Point3D axisX = new Point3D(1000, 0, 0);
@@ -167,10 +167,10 @@ class CvCubePers extends Canvas implements Runnable {
 								
 			
 				//System.out.println("gx0: " + gradX0 + "		gx1: " + gradX1);
-				System.out.println("gy0: " + gradY0 + "		gy1: " + gradY1);
+				//System.out.println("gy0: " + gradY0 + "		gy1: " + gradY1);
 				
 				//rotate(orig, axisX, (gradX1 - gradX0) / Math.PI);
-				rotate(orig, axisY, (Math.cos(gradY1) - Math.cos(gradY0)));
+				//rotate(orig, axisY, (Math.cos(gradY1) - Math.cos(gradY0)));
 				//rotate(orig, axisZ, (gradZ1 - gradZ0) / Math.PI);
 				
 				gradX0 = gradX1;
