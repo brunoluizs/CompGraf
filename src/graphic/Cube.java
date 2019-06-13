@@ -116,34 +116,37 @@ class CvCubePers extends Canvas implements Runnable {
 	Thread thr = new Thread(this);
 	
 	public void run() {
+		/*
 		Point3D a = new Point3D(200,10,0);
 		Point3D b = new Point3D(100,-100,10);
 		Point3D f = new Point3D(190,10,0);
 		Point3D d = new Point3D(110,200,20);
 		
-		Point3D orig = new Point3D(0,0,0);
-		Point3D axisX = new Point3D(1000, 0, 0);
-		Point3D axisY = new Point3D(0, 1000, 0);
-		Point3D axisZ = new Point3D(0, 0, 1000);
-		
 		herm.setPoint(a, 0);
 		herm.setPoint(b, 1);
 		herm.setPoint(f, 2);
 		herm.setPoint(d, 3);
+		*/
 		
+		Point3D orig = new Point3D(0,0,0);
+		Point3D axisX = new Point3D(1000, 0, 0);
+		Point3D axisY = new Point3D(0, 1000, 0);
+		Point3D axisZ = new Point3D(0, 0, 1000);
+
 		double gradX0, gradY0, gradZ0, gradX1, gradY1, gradZ1;
 		int p0 = 0, p1 = 1;
 		
 		try {
-			//getPoints();
+			getPoints();
 			
 			herm.calc();
 			
 			translate(herm.vec[0].x *0.03, herm.vec[0].y *0.03, herm.vec[0].z * 0.03);
 			
-			gradX0 = Math.atan2(herm.vec[p1].x - herm.vec[p0].x, herm.vec[p1].y - herm.vec[p0].y);
-			gradY0 = Math.atan2(herm.vec[p0].y, herm.vec[p1].y);
-			gradZ0 = Math.atan2(herm.vec[p0].z, herm.vec[p1].z);
+			//gradX0 = Math.atan2(herm.vec[p1].x - herm.vec[p0].x, herm.vec[p1].y - herm.vec[p0].y);
+			//gradY0 = Math.atan2(herm.vec[p0].y, herm.vec[p1].y);
+			gradY0 = Math.atan2( orig.y - herm.vec[p0].y, axisY.y - herm.vec[p0].y );
+			//gradZ0 = Math.atan2(herm.vec[p0].z, herm.vec[p1].z);
 			
 						
 			for(int c = 1; c < 1000; c++) {
@@ -156,21 +159,21 @@ class CvCubePers extends Canvas implements Runnable {
 				p1 = c;
 				
 				gradX1 = Math.atan2(herm.vec[p1].x - herm.vec[p0].x, herm.vec[p1].y - herm.vec[p0].y);
-				gradY1 = Math.atan2(herm.vec[p0].y, herm.vec[p1].y);
+				gradY1 = Math.atan2(orig.y - herm.vec[p1].y,  axisY.y - herm.vec[p1].y);
 				gradZ1 = Math.atan2(herm.vec[p0].z, herm.vec[p1].z);
+				
+				//rotate(orig, axisY, gradY1 / Math.PI);
 				
 				//System.out.println("gx0: " + gradX0 + "		gx1: " + gradX1);
 				//System.out.println("gy0: " + gradY0 + "		gy1: " + gradY1);
 				
 				//rotate(orig, axisX, gradX0 + gradX1);
-				
-				rotate(orig, axisY, Math.PI / (180 * (gradY1 - gradY0)));				
 				//rotate(orig, axisZ, gradZ0 + gradZ1);
 				
 				gradX0 = gradX1;
 				gradY0 = gradY1;
 				gradZ0 = gradZ1;
-
+				 
 				repaint();
 				
 				i = c;
