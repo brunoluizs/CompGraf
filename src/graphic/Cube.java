@@ -137,7 +137,7 @@ class CvCubePers extends Canvas implements Runnable {
 		int p0 = 0, p1 = 1;
 		
 		try {
-			//getPoints();
+			getPoints();
 			
 			herm.calc();
 			
@@ -204,10 +204,10 @@ class CvCubePers extends Canvas implements Runnable {
 	 *  
 	 * */
 
-class Obj { // Contém dados do objeto 3D
-	float rho, theta = (float) (-Math.PI/2), // Página 47
+class Obj { // ContÃ©m dados do objeto 3D
+	float rho, theta = (float) (-Math.PI/2), // PÃ¡gina 47
 			phi = 0F, d, objSize,
-			v11, v12, v13, v21, v22, v23, v32, v33, v43; // Elementos da matriz de visualização V
+			v11, v12, v13, v21, v22, v23, v32, v33, v43; // Elementos da matriz de visualizaÃ§Ã£o V
 	Point3D[] w; 	// Coordenadas do universo
 	Point2D[] vScr;	// Coordenadas da tela
 	Square[] f;
@@ -216,12 +216,12 @@ class Obj { // Contém dados do objeto 3D
 		w = new Point3D[8];
 		vScr = new Point2D[8];
 		f = new Square[6];
-		// Superfície da base:
+		// SuperfÃ­cie da base:
 		w[0] = new Point3D( 1, -1, -1);
 		w[1] = new Point3D( 1,  1, -1);
 		w[2] = new Point3D(-1,  1, -1);
 		w[3] = new Point3D(-1, -1, -1);
-		// Superfície do topo:
+		// SuperfÃ­cie do topo:
 		w[4] = new Point3D( 1, -1,  1);
 		w[5] = new Point3D( 1,  1,  1);
 		w[6] = new Point3D(-1,  1,  1);
@@ -229,14 +229,14 @@ class Obj { // Contém dados do objeto 3D
 		// Quadrados:
 		f[0] = new Square(0, 1, 5, 4); // Frente 	(Azul)
 		f[1] = new Square(1, 2, 6, 5); // Direita 	(Verde)
-		f[2] = new Square(2, 3, 7, 6); // Atrás		(Ciano)
+		f[2] = new Square(2, 3, 7, 6); // AtrÃ¡s		(Ciano)
 		f[3] = new Square(3, 0, 4, 7); // Esquerda	(Magenta)
 		f[4] = new Square(4, 5, 6, 7); // Topo		(Vermelho)
 		f[5] = new Square(0, 3, 2, 1); // Base		(Amarelo)
 		
 		objSize = (float) Math.sqrt(12F);
 			// = sqrt(2*2 + 2*2 + 2*2);
-			// = distância entre dois vértices opostos
+			// = distÃ¢ncia entre dois vÃ©rtices opostos
 		
 		rho = objSize * 5;
 	}
